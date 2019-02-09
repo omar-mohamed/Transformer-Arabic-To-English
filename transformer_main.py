@@ -32,21 +32,21 @@ from absl import flags
 import tensorflow as tf
 # pylint: enable=g-bad-import-order
 
-from official.transformer import compute_bleu
-from official.transformer import translate
-from official.transformer.model import model_params
-from official.transformer.model import transformer
-from official.transformer.utils import dataset
-from official.transformer.utils import metrics
-from official.transformer.utils import schedule
-from official.transformer.utils import tokenizer
-from official.utils.accelerator import tpu as tpu_util
-from official.utils.export import export
-from official.utils.flags import core as flags_core
-from official.utils.logs import hooks_helper
-from official.utils.logs import logger
-from official.utils.misc import distribution_utils
-from official.utils.misc import model_helpers
+import compute_bleu
+import translate
+from model import model_params
+from model import transformer
+from utils import dataset
+from utils import metrics
+from utils import schedule
+from utils import tokenizer
+from utils.accelerator import tpu as tpu_util
+from utils.export import export
+from utils.flags import core as flags_core
+from utils.logs import hooks_helper
+from utils.logs import logger
+from utils.misc import distribution_utils
+from utils.misc import model_helpers
 
 PARAMS_MAP = {
     "tiny": model_params.TINY_PARAMS,

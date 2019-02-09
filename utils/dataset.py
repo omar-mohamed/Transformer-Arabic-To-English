@@ -56,7 +56,7 @@ import os
 
 import tensorflow as tf
 
-from official.utils.misc import model_helpers
+from utils.misc import model_helpers
 
 # Buffer size for reading records from a TFRecord file. Each training file is
 # 7.2 MB, so 8 MB allows an entire file to be kept in memory.

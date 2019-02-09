@@ -33,8 +33,8 @@ from absl import flags
 import tensorflow as tf
 # pylint: enable=g-bad-import-order
 
-from official.transformer.utils import metrics
-from official.utils.flags import core as flags_core
+from utils import metrics
+from utils.flags import core as flags_core
 
 
 class UnicodeRegex(object):

@@ -20,7 +20,7 @@ from __future__ import print_function
 
 import tensorflow as tf  # pylint: disable=g-bad-import-order
 
-from official.transformer.model import beam_search
+import beam_search
 
 
 class BeamSearchHelperTests(tf.test.TestCase):

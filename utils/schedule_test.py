@@ -16,7 +16,7 @@
 
 import tensorflow as tf
 
-from official.transformer.utils import schedule
+from utils import schedule
 
 
 class ScheduleBaseTester(tf.test.TestCase):
