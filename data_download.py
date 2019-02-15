@@ -310,8 +310,11 @@ def shuffle_records(fname):
   # Rename file prior to shuffling
   tmp_fname = fname + ".unshuffled"
   tf.gfile.Rename(fname, tmp_fname)
-
-  reader = tf.io.tf_record_iterator(tmp_fname)
+  reader = []
+  try:
+    reader = tf.io.tf_record_iterator(tmp_fname)
+  except:
+    reader = tf.python_io.tf_record_iterator(tmp_fname)
   records = []
   for record in reader:
     records.append(record)
