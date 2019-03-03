@@ -1,4 +1,4 @@
-# Transformer Arabic To English
+# Arabic To English Machine Translation with Google Transformer Model
 This is an implementation of Machine Translation from Arabic to English using the [Transformer Model](https://arxiv.org/abs/1706.03762) paper. It's Based on the code provided by the authors: [Transformer code](https://github.com/tensorflow/tensor2tensor/blob/master/tensor2tensor/models/transformer.py)
 
 We train the model using the [OpenSubtitles V2018](http://opus.nlpl.eu/OpenSubtitles-v2018.php) arabic-english parallel dataset.
