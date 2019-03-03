@@ -47,16 +47,20 @@ from utils.flags import core as flags_core
 # that generates a vocabulary set that is closest in size to _TARGET_VOCAB_SIZE.
 _TRAIN_DATA_SOURCES = [
     {
-        "url": "https://object.pouta.csc.fi/OPUS-MultiUN/v1/moses/ar-en.txt.zip",
-        "input": "MultiUN.ar-en.ar",
-        "target": "MultiUN.ar-en.en",
+        "url": "https://archive.org/download/OpenSubtitlesArEn.train/OpenSubtitles-ar-en.train.zip",
+        "input": "train.ar",
+        "target": "train.en",
     },
 ]
 # Use pre-defined minimum count to generate subtoken vocabulary.
 _TRAIN_DATA_MIN_COUNT = 6
 
 _EVAL_DATA_SOURCES = [
-    {}
+    {
+        "url": "https://archive.org/download/OpenSubtitlesArEn.dev/OpenSubtitles-ar-en.dev.zip",
+        "input": "dev.ar",
+        "target": "dev.en",
+    },
 ]
 
 # Vocabulary constants
@@ -65,7 +69,7 @@ _TARGET_THRESHOLD = 327  # Accept vocabulary if size is within this threshold
 VOCAB_FILE = "vocab.ende.%d" % _TARGET_VOCAB_SIZE
 
 # Strings to inclue in the generated files.
-_PREFIX = "multiUN-ar-en"
+_PREFIX = "OpenSubtitles-ar-en"
 _TRAIN_TAG = "train"
 _EVAL_TAG = "dev"  # Following WMT and Tensor2Tensor conventions, in which the
                    # evaluation datasets are tagged as "dev" for development.
@@ -362,8 +366,12 @@ def main(unused_argv):
 
   # Get paths of download/extracted training and evaluation files.
   tf.logging.info("Step 1/4: Downloading data from source")
+
+  print()
   train_files = get_raw_files(FLAGS.raw_dir, _TRAIN_DATA_SOURCES)
-  #eval_files = get_raw_files(FLAGS.raw_dir, _EVAL_DATA_SOURCES)
+  eval_files = get_raw_files(FLAGS.raw_dir, _EVAL_DATA_SOURCES)
+
+
 
   # Create subtokenizer based on the training files.
   tf.logging.info("Step 2/4: Creating subtokenizer and building vocabulary")
@@ -376,16 +384,16 @@ def main(unused_argv):
 
   tf.logging.info("Step 3/4: Compiling training and evaluation data")
   compiled_train_files = compile_files(FLAGS.raw_dir, train_files, _TRAIN_TAG)
-  #compiled_eval_files = compile_files(FLAGS.raw_dir, eval_files, _EVAL_TAG)
+  compiled_eval_files = compile_files(FLAGS.raw_dir, eval_files, _EVAL_TAG)
 
   # Tokenize and save data as Examples in the TFRecord format.
   tf.logging.info("Step 4/4: Preprocessing and saving data")
   train_tfrecord_files = encode_and_save_files(
       subtokenizer, FLAGS.data_dir, compiled_train_files, _TRAIN_TAG,
       _TRAIN_SHARDS)
-  #encode_and_save_files(
-  #    subtokenizer, FLAGS.data_dir, compiled_eval_files, _EVAL_TAG,
-  #    _EVAL_SHARDS)
+  encode_and_save_files(
+      subtokenizer, FLAGS.data_dir, compiled_eval_files, _EVAL_TAG,
+      _EVAL_SHARDS)
 
   for fname in train_tfrecord_files:
     shuffle_records(fname)
