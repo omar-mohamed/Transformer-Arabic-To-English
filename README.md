@@ -43,7 +43,7 @@ tiny | 26.54
 
 
 
-## Train your own
+## Train your own Model
 
 Below are the commands for running the Transformer model. See the [Detailed instrutions](#detailed-instructions) for more details on running the model.
 
