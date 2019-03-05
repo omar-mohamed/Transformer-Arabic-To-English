@@ -3,27 +3,6 @@ This is an implementation of Machine Translation from Arabic to English using th
 
 We train the model using the [OpenSubtitles V2018](http://opus.nlpl.eu/OpenSubtitles-v2018.php) arabic-english parallel dataset.
 
-## Contents
-  * [Contents](#contents)
-  * [Walkthrough](#walkthrough)
-  * [Benchmarks](#benchmarks)
-    * [Training times](#training-times)
-    * [Evaluation results](#evaluation-results)
-  * [Detailed instructions](#detailed-instructions)
-    * [Environment preparation](#environment-preparation)
-    * [Download and preprocess datasets](#download-and-preprocess-datasets)
-    * [Model training and evaluation](#model-training-and-evaluation)
-    * [Translate using the model](#translate-using-the-model)
-    * [Compute official BLEU score](#compute-official-bleu-score)
-    * [TPU](#tpu)
-  * [Export trained model](#export-trained-model)
-    * [Example translation](#example-translation)
-  * [Implementation overview](#implementation-overview)
-    * [Model Definition](#model-definition)
-    * [Model Estimator](#model-estimator)
-    * [Other scripts](#other-scripts)
-    * [Test dataset](#test-dataset)
-  * [Term definitions](#term-definitions)
 
 ## Walkthrough
 
@@ -94,5 +73,8 @@ Below are the case-insensitive BLEU scores after 10 epochs.
 
 Param Set | Score
 tiny | 26.54
+
+![evaluation bleu](/img/bleu.png)
+
 
 
