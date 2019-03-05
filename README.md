@@ -1,5 +1,5 @@
 # Arabic to English Machine Translation with Google Transformer Model
-This is an implementation of Machine Translation from Arabic to English using the [Transformer Model](https://arxiv.org/abs/1706.03762) paper. It's Based on the code provided by the authors: [Transformer code](https://github.com/tensorflow/tensor2tensor/blob/master/tensor2tensor/models/transformer.py)
+This is an implementation of Machine Translation from Arabic to English using the [Transformer Model](https://arxiv.org/abs/1706.03762). It's Based on the code provided by the authors: [Transformer code](https://github.com/tensorflow/tensor2tensor/blob/master/tensor2tensor/models/transformer.py)
 
 We train the model using the [OpenSubtitles V2018](http://opus.nlpl.eu/OpenSubtitles-v2018.php) arabic-english parallel dataset.
 
@@ -43,7 +43,8 @@ python translate.py --model_dir=$MODEL_DIR --vocab_file=$VOCAB_FILE \
 python compute_bleu.py --translation=translation.en --reference=test_data/newstest2014.de
 ```
 
-## Benchmarks
+### Preprocessing
+Before training, we strip all Tashkeel from the arabic sentences in the OpenSubtitles dataset using [pyarabic](https://pypi.org/project/PyArabic/)
 ### Training
 
 For now, we only trained a slightly modified version of the `tiny` model with the following hyperparameters:
