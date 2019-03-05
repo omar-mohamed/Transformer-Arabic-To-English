@@ -21,14 +21,14 @@ BASE_PARAMS = defaultdict(
     lambda: None,  # Set default value to None.
 
     # Input params
-    default_batch_size=2048,  # Maximum number of tokens per batch of examples.
+    default_batch_size=8192,  # Maximum number of tokens per batch of examples.
     default_batch_size_tpu=32768,
-    max_length=256,  # Maximum number of tokens per example.
+    max_length=128,  # Maximum number of tokens per example.
 
     # Model params
     initializer_gain=1.0,  # Used in trainable variable initialization.
-    vocab_size=33708,  # Number of tokens defined in the vocabulary file.
-    hidden_size=512,  # Model dimension in the hidden layers.
+    vocab_size=17546,  # Number of tokens defined in the vocabulary file.
+    hidden_size=256,  # Model dimension in the hidden layers.
     num_hidden_layers=6,  # Number of layers in the encoder and decoder stacks.
     num_heads=8,  # Number of heads to use in multi-headed attention.
     filter_size=2048,  # Inner layer dimension in the feedforward network.
@@ -88,9 +88,9 @@ BIG_MULTI_GPU_PARAMS.update(
 # Parameters for testing the model
 TINY_PARAMS = BASE_PARAMS.copy()
 TINY_PARAMS.update(
-    default_batch_size=1024,
-    default_batch_size_tpu=1024,
-    hidden_size=32,
+    default_batch_size=20000,
+    default_batch_size_tpu=20000,
+    hidden_size=64,
     num_heads=4,
     filter_size=256,
 )

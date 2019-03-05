@@ -134,6 +134,10 @@ def translate_file(
       for i in sorted_keys:
         f.write("%s\n" % translations[i])
 
+    with open(output_file+".txt", "w") as f:
+      for i in sorted_keys:
+        f.write("%s\n" % translations[i])
+
 
 def translate_text(estimator, subtokenizer, txt):
   """Translate a single string."""
@@ -151,7 +155,7 @@ def translate_text(estimator, subtokenizer, txt):
 
 
 def main(unused_argv):
-  from official.transformer import transformer_main
+  import transformer_main
 
   tf.logging.set_verbosity(tf.logging.INFO)
 
@@ -199,7 +203,7 @@ def define_translate_flags():
           "Directory containing Transformer model checkpoints."))
   flags.DEFINE_enum(
       name="param_set", short_name="mp", default="big",
-      enum_values=["base", "big"],
+      enum_values=["base", "big", "tiny"],
       help=flags_core.help_wrap(
           "Parameter set to use when creating and training the model. The "
           "parameters define the input shape (batch size and max length), "
