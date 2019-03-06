@@ -1,0 +1,6 @@
+scipy
+numpy
+tensorflow==1.12.0
+flask
+gunicorn
+flask_cors
