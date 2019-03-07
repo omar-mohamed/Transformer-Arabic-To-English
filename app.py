@@ -5,17 +5,42 @@ from __future__ import print_function
 import os
 import sys
 import logging
+import time
+
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import tensorflow as tf
 import translate
-from absl import flags
 from utils import tokenizer
+import transformer_main
 
 _DECODE_BATCH_SIZE = 32
 _EXTRA_DECODE_LENGTH = 100
 _BEAM_SIZE = 4
 _ALPHA = 0.6
+
+# load model
+
+tf.logging.set_verbosity(tf.logging.INFO)
+subtokenizer = tokenizer.Subtokenizer("./tiny-model/vocab.ende.32768")
+
+params = transformer_main.PARAMS_MAP["tiny"]
+params["beam_size"] = _BEAM_SIZE
+params["alpha"] = _ALPHA
+params["extra_decode_length"] = _EXTRA_DECODE_LENGTH
+params["batch_size"] = _DECODE_BATCH_SIZE
+estimator = tf.estimator.Estimator(
+    model_fn=transformer_main.model_fn, model_dir="./tiny-model/",
+    params=params)
+
+# input_data = "حبيبي يا عاشق"
+# tf.logging.info("Translating text: %s" % input_data)
+# start = time.time()
+# print("started timing")
+# output_data = translate.translate_text(estimator, subtokenizer, input_data)
+# end = time.time()
+# print("translate took %f seconds" % (end - start))
+
 
 # define the app
 app = Flask(__name__)
@@ -26,31 +51,12 @@ if 'DYNO' in os.environ:
     app.logger.addHandler(logging.StreamHandler(sys.stdout))
     app.logger.setLevel(logging.INFO)
 
-FLAGS = flags.FLAGS
-
 
 # API route
 @app.route('/api', methods=['POST'])
 def api():
-    import transformer_main
-
-    tf.logging.set_verbosity(tf.logging.INFO)
-
     input_data = request.json
     app.logger.info("api_input: " + str(input_data))
-
-    subtokenizer = tokenizer.Subtokenizer(FLAGS.vocab_file)
-
-    # Set up estimator and params
-    params = transformer_main.PARAMS_MAP[FLAGS.param_set]
-    params["beam_size"] = _BEAM_SIZE
-    params["alpha"] = _ALPHA
-    params["extra_decode_length"] = _EXTRA_DECODE_LENGTH
-    params["batch_size"] = _DECODE_BATCH_SIZE
-    estimator = tf.estimator.Estimator(
-        model_fn=transformer_main.model_fn, model_dir=FLAGS.model_dir,
-        params=params)
-
     tf.logging.info("Translating text: %s" % input_data)
     output_data = translate.translate_text(estimator, subtokenizer, input_data)
     app.logger.info("api_output: " + str(output_data))

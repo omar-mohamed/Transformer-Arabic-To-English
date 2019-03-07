@@ -152,7 +152,7 @@ def translate_text(estimator, subtokenizer, txt):
   translation = next(predictions)["outputs"]
   translation = _trim_and_decode(translation, subtokenizer)
   tf.logging.info("Translation of \"%s\": \"%s\"" % (txt, translation))
-
+  return translation
 
 def main(unused_argv):
   import transformer_main
