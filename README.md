@@ -40,8 +40,6 @@ Param Set | Score
 tiny | 26.54
 
 ### Sample Translations
-We sampled a 1000-sentence portion from the OpenSubtitles v2018 training set for evaluation.
-Below are the case-insensitive BLEU scores after 10 epochs.
 
 arabic (in)| english (out)
 --- | --- |
@@ -49,7 +47,7 @@ arabic (in)| english (out)
 وهذا لن يشكل فارق، فأنا أقود سيارتي بهذا الطريق اسبوعيا | And that won't be a difference, I'm driving my car this way a week.
 أنا لا أبحث عن الرجل المناسب | I'm not looking for the right guy.
 اعتقد أنني بدأت أعجب بها وهي أيضا تبادلني نفس الشعور | I think I'm starting to like her, and she also makes me the same feeling.
-
+ماذا لو ان هذه هي آخر فرصة لي للتحدث؟ | What if this is the last chance to talk to me?
 
 ![evaluation bleu](/img/bleu.png)
 
