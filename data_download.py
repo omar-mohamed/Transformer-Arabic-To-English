@@ -57,7 +57,7 @@ _TRAIN_DATA_MIN_COUNT = 6
 
 _EVAL_DATA_SOURCES = [
     {
-        "url": "https://archive.org/download/OpenSubtitlesArEn.dev/OpenSubtitles-ar-en.dev.zip",
+        "url": "https://archive.org/download/OpenSubtitlesArEn.dev_201903/OpenSubtitles-ar-en.dev.zip",
         "input": "dev.ar",
         "target": "dev.en",
     },
