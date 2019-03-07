@@ -28,7 +28,7 @@ optimizer_adam_epsilon=1e-09
 
 ![training loss](/img/loss.png)
 #### Time
-Model was trained for ~20h for 10 epochs with almost 2 hours/epoch
+Model was trained for ~20h for 10 epochs (2 hours/epoch)
 
 
 ### Evaluation results
@@ -38,6 +38,18 @@ Below are the case-insensitive BLEU scores after 10 epochs.
 Param Set | Score
 --- | --- |
 tiny | 26.54
+
+### Sample Translations
+We sampled a 1000-sentence portion from the OpenSubtitles v2018 training set for evaluation.
+Below are the case-insensitive BLEU scores after 10 epochs.
+
+arabic (in)| english (out)
+--- | --- |
+دائما لشخص واحد | Always for one person.
+وهذا لن يشكل فارق، فأنا أقود سيارتي بهذا الطريق اسبوعيا | And that won't be a difference, I'm driving my car this way a week.
+أنا لا أبحث عن الرجل المناسب | I'm not looking for the right guy.
+اعتقد أنني بدأت أعجب بها وهي أيضا تبادلني نفس الشعور | I think I'm starting to like her, and she also makes me the same feeling.
+
 
 ![evaluation bleu](/img/bleu.png)
 
