@@ -28,7 +28,7 @@ optimizer_adam_epsilon=1e-09
 
 ![training loss](/img/loss.png)
 #### Time
-Model was trained for ~20h for 10 epochs with almost 2 hours/epoch
+Model was trained for ~20h for 10 epochs (2 hours/epoch)
 
 
 ### Evaluation results
@@ -42,6 +42,15 @@ tiny | 26.54
 ![evaluation bleu](/img/bleu.png)
 
 
+### Sample Translations
+
+arabic (in)| english (out)
+--- | --- |
+دائما لشخص واحد | Always for one person.
+وهذا لن يشكل فارق، فأنا أقود سيارتي بهذا الطريق اسبوعيا | And that won't be a difference, I'm driving my car this way a week.
+أنا لا أبحث عن الرجل المناسب | I'm not looking for the right guy.
+اعتقد أنني بدأت أعجب بها وهي أيضا تبادلني نفس الشعور | I think I'm starting to like her, and she also makes me the same feeling.
+ماذا لو ان هذه هي آخر فرصة لي للتحدث؟ | What if this is the last chance to talk to me?
 
 ## Train your own Model
 
