@@ -39,6 +39,9 @@ Param Set | Score
 --- | --- |
 tiny | 26.54
 
+![evaluation bleu](/img/bleu.png)
+
+
 ### Sample Translations
 
 arabic (in)| english (out)
@@ -48,10 +51,6 @@ arabic (in)| english (out)
 أنا لا أبحث عن الرجل المناسب | I'm not looking for the right guy.
 اعتقد أنني بدأت أعجب بها وهي أيضا تبادلني نفس الشعور | I think I'm starting to like her, and she also makes me the same feeling.
 ماذا لو ان هذه هي آخر فرصة لي للتحدث؟ | What if this is the last chance to talk to me?
-
-![evaluation bleu](/img/bleu.png)
-
-
 
 ## Train your own Model
 
