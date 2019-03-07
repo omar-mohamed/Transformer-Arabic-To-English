@@ -202,7 +202,7 @@ def define_translate_flags():
       help=flags_core.help_wrap(
           "Directory containing Transformer model checkpoints."))
   flags.DEFINE_enum(
-      name="param_set", short_name="mp", default="big",
+      name="param_set", short_name="mp",default="tiny",
       enum_values=["base", "big", "tiny"],
       help=flags_core.help_wrap(
           "Parameter set to use when creating and training the model. The "
